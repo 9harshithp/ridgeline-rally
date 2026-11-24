@@ -412,9 +412,11 @@ dialog {
   border: 2px solid #5a5e60;
   border-radius: 9px;
   padding: 22px;
-  width: min(440px, 94vw);
+  width: min(540px, 94vw);
+  max-height: 88vh;
   box-shadow: 0 8px 0 #1118;
   font-size: 14px;
+  overflow-y: auto;
 }
 dialog::backdrop {
   background: #101516ad;
@@ -426,6 +428,11 @@ dialog::backdrop {
   gap: 12px;
   border-bottom: 1px solid #484b4d;
   padding-bottom: 15px;
+  position: sticky;
+  top: -22px;
+  background: #282b2e;
+  z-index: 10;
+  margin-top: -6px;
 }
 .modalHead h2 {
   margin: 0;
@@ -434,6 +441,107 @@ dialog::backdrop {
 }
 .modalHead button {
   font-size: 22px;
+}
+.sectionHeader {
+  font: 12px var(--pixel);
+  letter-spacing: 0.05em;
+  color: #ffb451;
+  margin: 18px 0 10px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #3d4144;
+}
+.carCards,
+.trackCards {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+.card {
+  background: #1f2124;
+  border: 1px solid #404448;
+  border-radius: 6px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: border-color 0.15s;
+}
+.card.selectedCard {
+  border-color: #ffb451;
+  background: #272522;
+  box-shadow: inset 0 0 0 1px #ffb45144;
+}
+.cardHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cardHead b {
+  font: 14px var(--pixel);
+  color: #fff;
+}
+.badge {
+  font: 10px var(--mono);
+  padding: 2px 7px;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+.activeBadge {
+  background: #e67e22;
+  color: #fff;
+  font-weight: bold;
+}
+.cardDesc {
+  margin: 0;
+  font-size: 12px;
+  color: #a4a8aa;
+  line-height: 1.4;
+}
+.statsBar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 4px 0;
+  font-size: 10px;
+}
+.statsBar small {
+  color: #ffcb75;
+  font-family: var(--mono);
+}
+.barPip {
+  font-family: var(--mono);
+  letter-spacing: -1px;
+  color: #9bd579;
+  font-size: 11px;
+}
+.trackMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: var(--muted);
+  margin: 3px 0;
+}
+.actionBtn {
+  align-self: flex-end;
+  border: 1px solid #bc8c46;
+  background: #42392b;
+  color: #ffd18a;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font: 11px var(--pixel);
+  cursor: pointer;
+  margin-top: 4px;
+}
+.actionBtn:disabled {
+  border-color: #56595c;
+  background: #343638;
+  color: #777;
+  cursor: default;
+}
+.actionBtn:not(:disabled):hover {
+  filter: brightness(1.2);
 }
 .row {
   display: flex;
@@ -455,6 +563,7 @@ dialog::backdrop {
   color: #ffd18a;
   padding: 8px;
   border-radius: 4px;
+  font-family: inherit;
 }
 .row button:disabled {
   border-color: #56595c;
