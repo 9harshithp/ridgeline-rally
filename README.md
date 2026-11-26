@@ -10,6 +10,7 @@
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![Release](https://img.shields.io/github/v/release/9harshithp/ridgeline-rally?include_prereleases&style=for-the-badge)
+[![CI](https://github.com/9harshithp/ridgeline-rally/actions/workflows/ci.yml/badge.svg)](https://github.com/9harshithp/ridgeline-rally/actions/workflows/ci.yml)
 
 </div>
 
@@ -199,6 +200,31 @@ Artwork, fonts and PixiJS are bundled with the project.
 
 ---
 
+## Testing & CI
+
+Automated validation and end-to-end browser testing run via GitHub Actions ([`.github/workflows/ci.yml`](./.github/workflows/ci.yml)) on pushes to `main`, pull requests, and manual `workflow_dispatch` triggers.
+
+To run the full suite locally:
+
+```bash
+npm ci
+npm test
+```
+
+Latest verified test run:
+
+- **JavaScript & Asset Validation** (`npm run validate:js`): Passed — verified syntax (`node --check`) for `art.js`, `game.js`, `playwright.config.js`, `scripts/validate.mjs`, and `tests/game.spec.js`, plus presence and non-zero size for all 7 bundled assets (`index.html`, `style.css`, `pixi-legacy.min.js`, `art.js`, `game.js`, `mono.ttf`, `pixel.ttf`).
+- **Playwright Browser Tests** (`npm run test:e2e`): **6/6 passed** in Chromium:
+  - Game initialization, PixiJS canvas rendering, and header logo rendering
+  - Vehicle acceleration, braking, fuel consumption, and coin collection
+  - Pause, resume, and restart via modal buttons and keyboard shortcuts (`P`, `R`)
+  - Track selection, unlocking, and `localStorage` persistence
+  - Garage vehicle unlocking, selection, and upgrades
+  - Responsive layout across desktop (`1280x800`), tablet (`760x800`), and mobile (`375x667`) viewports
+  - Zero console errors, uncaught page errors, failed network requests, or HTTP >= 400 responses across all scenarios
+
+---
+
 ## Development Roadmap
 
 - [x] Core racing mechanics
@@ -211,8 +237,8 @@ Artwork, fonts and PixiJS are bundled with the project.
 - [x] Personal best tracking
 - [x] Pixel-art graphics
 - [x] Initial GitHub pre-release
-- [ ] Automated regression testing
-- [ ] GitHub Actions CI
+- [x] Automated regression testing
+- [x] GitHub Actions CI
 - [ ] Public game deployment
 - [ ] Additional tracks and vehicles
 
