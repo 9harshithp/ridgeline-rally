@@ -14,7 +14,6 @@
 </div>
 
 ---
-
 ## Application Showcase
 
 <div align="center">
